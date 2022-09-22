@@ -70,7 +70,35 @@ function pause() {
 
 document.addEventListener("DOMContentLoaded", function() {
   // When the button is clicked, inject setPageBackgroundColor into current page
-const hide = document.getElementById('hide');
+// const hide = document.getElementById('hide');
+// hide.addEventListener("click", async () => {
+//   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+//   chrome.scripting.executeScript({
+//     target: { tabId: tab.id },
+//     func: hideElements(),
+//   });
+// });
+
+// // The body of this function will be executed as a content script inside the
+// // current page
+// function hideElements() {
+//   chrome.storage.sync.get("*", function(obj){
+//     document.body.style.visibility = 'hide';
+//   });
+// }
+  // STRETCH FEATURE - hide current page
+  // chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+  //   let url = tabs[0].url;
+  //   if (document.location.href.indexOf(url) != -1) {
+  //        $("*").hide();
+  //   }
+  let duration = 20, // your time in seconds here
+      display = document.querySelector('#timerDisplay');
+  startTimer(duration, display, working);
+});
+
+
 hide.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
@@ -83,21 +111,11 @@ hide.addEventListener("click", async () => {
 // The body of this function will be executed as a content script inside the
 // current page
 function hideElements() {
-  chrome.storage.sync.get("*", function(obj){
-    document.body.style.visibility = hide;
+  const hide = document.getElementById('hide');
+  chrome.storage.sync.get("hide", function(obj){
+    obj.body.style.backgroundColor = 'yellow';
   });
 }
-  // STRETCH FEATURE - hide current page
-  // chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-  //   let url = tabs[0].url;
-  //   if (document.location.href.indexOf(url) != -1) {
-  //        $("*").hide();
-  //   }
-  let duration = 20, // your time in seconds here
-      display = document.querySelector('#timerDisplay');
-  startTimer(duration, display, working);
-});
-
 
 
 

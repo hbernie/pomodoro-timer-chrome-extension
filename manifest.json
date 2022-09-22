@@ -3,7 +3,6 @@
     "name": "Hackathon",
     "version": "1.0",
     "browser_action": {
-        "default_title": "Test",
         "default_popup": "index.html"
     },
     "permissions":
