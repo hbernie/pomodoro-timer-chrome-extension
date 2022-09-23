@@ -70,7 +70,7 @@ document.getElementById('hide').onclick = async () => {
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    func: hidebutton(working)
+    func: hidebutton()
   });
 }
 
