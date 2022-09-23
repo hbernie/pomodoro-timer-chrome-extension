@@ -1,10 +1,10 @@
 {
-    "manifest_version": 2,
-    "name": "Hackathon",
+    "name": "Funky Pomodoro Timer",
+    "description": "Timer with buttons to start, pause, and hide elements from page",
     "version": "1.0",
-    "browser_action": {
-        "default_popup": "index.html"
-    },
-    "permissions":
-        ["storage", "activeTab","scripting"]
+    "manifest_version": 3,
+    "permissions": ["storage", "activeTab", "scripting"],
+    "action": {
+      "default_popup": "index.html"
+    }
   }
