@@ -38,13 +38,13 @@ function startTimer(duration, display, working) {
       sound.play();
       let title = document.getElementById("title");
       title.innerHTML = "Break Time!";
-      startTimer(5, document.querySelector('#timerDisplay'), working);
+      startTimer(300, document.querySelector('#timerDisplay'), working);
     } else if (!working) {
       working = true;
       sound.play();
       let title = document.getElementById("title");
       title.innerHTML = "Back to Work!";
-      startTimer(20, document.querySelector('#timerDisplay'), working);
+      startTimer(1500, document.querySelector('#timerDisplay'), working);
     }
   }
 
@@ -65,25 +65,25 @@ function pause() {
     clearInterval(ourTimer);
 }
 
-document.getElementById('hide').onclick = async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+// document.getElementById('hide').onclick = async () => {
+//   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    func: hidebutton
-  });
-}
+//   chrome.scripting.executeScript({
+//     target: { tabId: tab.id },
+//     func: hidebutton
+//   });
+// }
 
-function hidebutton() {
-  const content = document.querySelector('body');
-  content.style.display = 'none';
-}
+// function hidebutton() {
+//   const content = document.querySelector('body');
+//   content.style.display = 'none';
+// }
 
 
 
 //extension starts here
 document.addEventListener("DOMContentLoaded", function() {
-  let duration = 20, // your time in seconds here
+  let duration = 1500, // your time in seconds here
       display = document.querySelector('#timerDisplay');
   startTimer(duration, display, working);
 
